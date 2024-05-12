@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <link rel="stylesheet" href="./block/css/style.css">
+    <link rel="stylesheet" href="http://localhost/training-project/training/block/css/style.css">
 </head>
 
 <body>
