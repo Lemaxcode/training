@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($user != false && password_verify($password, $user["password"]))  {
         session_start();
             $_SESSION["name"] = $name;
-            header("location: profil/session/index.php");
+            header("location: training-project/training/profil/session/index.php");
 
         }
     }
@@ -46,7 +46,7 @@ include ("block/navbar.php");
     <!-- Formulaire de connexion  -->
     <form method="POST" action="index.php">
 
-        <label for="username">Username</label>
+        <label for="name">Username</label>
         <input type="text" name="name" id="name">
         <label for="password">Password</label>
         <input type="text" name="password" id="password">

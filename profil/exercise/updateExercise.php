@@ -13,9 +13,9 @@ $pdo = connectDB();
 
 $id = $_GET["id"];
 
-$pokemon = findSessionById($pdo, $id);
+$exercise = findSessionById($pdo, $id);
 
-if ($pokemon === false) {
+if ($exercise === false) {
     header("Location: https://localhost/training-project/training/profil/exercise/index.php");
 }
 

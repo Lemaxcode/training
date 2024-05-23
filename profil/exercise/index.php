@@ -5,23 +5,24 @@
     $response = $pdo->prepare("SELECT * FROM exercise");
         $response->execute();
 
-        $sessionsBdd = $response->fetchAll();
-        var_dump($sessionsBdd);
+        $exerciseBdd = $response->fetchAll();
+        // var_dump($sessionsBdd);
     include("../../block/header.php");
     include("../../block/navbar.php");
     
     ?>
 <h1>Exercice</h1>
-
+<a href="addExercise.php">Nouvel exercice</a>
+<a href="deleteExercise.php?id=">delete exercise</a>
 <div>
 
     <?php
-    foreach ($exercise as $exercises) {
+    foreach ($exerciseBdd as $exercises) {
     ?>
-        <div>
+        <div class="bordel">
 
             <p><?php echo ($exercises["name"]) ?></p>
-            <p><?php echo ($exercises["id"]) ?></p>
+            
             <a href="detailExercise.php?id=<?php echo ($exercises["id"]) ?>">Détail</a>
         </div>
     <?php

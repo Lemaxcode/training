@@ -18,7 +18,7 @@ include("../../block/navbar.php");
 ?>
 <h1>Ajout Exercice</h1>
 
-<form action="addSession.php" method="POST">
+<form action="addExercise.php" method="POST">
     <!-- Champ pour le nom de l'exercice -->
     <label for="name">Nom de l'exercice:</label>
     <input type="text" id="name" name="name" required>

@@ -6,8 +6,8 @@ function check_session()
         session_start();
     }
     if (!isset($_SESSION["name"])) {
-        header("Location: https://http://localhost/training-project/training/index.php");
-        exit();
+        //header("Location: http:/localhost/training-project/training/index.php");
+        //exit();
     }
 }
 
@@ -26,7 +26,7 @@ function connectDB()
         $user = "root";
         $password = "";
 
-        $pdo = new PDO("mysql:host=" . $host . ";port=3306;dbname=" . $databaseName . ";charset=utf8", $user, $password);
+        $pdo = new PDO("mysql:host=" . $host . ";port=3307;dbname=" . $databaseName . ";charset=utf8", $user, $password);
 
         configPdo($pdo);
 
@@ -95,7 +95,8 @@ function getUserByName(PDO $pdo, string $username)
     return $response->fetch();
 }
 
-function validateSessionRequiredFields(array $data) {
+function validateSessionRequiredFields(array $data)
+{
     $errors = [];
 
     // Validation de l'identifiant de la Session
@@ -114,7 +115,6 @@ function validateSessionRequiredFields(array $data) {
     if (empty(trim($data['date'] ?? ''))) {
         $errors[] = "Le champ 'date' est manquant.";
     }
-    
 }
 function insertSession($pdo, $session)
 {
@@ -165,7 +165,8 @@ function deleteSession(PDO $pdo, int $id)
 // --------------------- FONCTIONS EXERCISE --------------- //
 // --------------------------------------------------------//
 
-function validateExerciseRequiredFields(array $data) {
+function validateExerciseRequiredFields(array $data)
+{
     $errors = [];
 
     // Validation de l'identifiant de l'exercice
@@ -221,7 +222,7 @@ function insertExercise($pdo, $exercise)
         [
             ':name' => $exercise["name"],
             ':description' => $exercise["description"],
-            ':date' => $exercise["execution"]
+            ':execution' => $exercise["execution"]
         ]
 
     );
@@ -263,7 +264,8 @@ function deleteExercise(PDO $pdo, int $id)
 // --------------------- FONCTIONS SESSION EXERCISE --------------- //
 // --------------------------------------------------------//
 
-function validateSessionExerciseRequiredFields(array $data) {
+function validateSessionExerciseRequiredFields(array $data)
+{
     $errors = [];
 
     // Validation de l'identifiant de sessionExercise
@@ -334,7 +336,7 @@ function insertSessionExercise($pdo, $sessionExercise)
             ':nbReps' => $sessionExercise["nbReps"],
             ':weight' => $sessionExercise["weight"],
             ':id_session' => $sessionExercise["id_session"],
-            "id_exercise"=> $sessionExercise["id_exercise"],
+            "id_exercise" => $sessionExercise["id_exercise"],
             ':id' => $sessionExercise["id"]
         ]
 
@@ -357,7 +359,7 @@ function updateSessionExercise(PDO $pdo, array $sessionExercise)
             ':nbReps' => $sessionExercise["nbReps"],
             ':weight' => $sessionExercise["weight"],
             ':id_session' => $sessionExercise["id_session"],
-            "id_exercise"=> $sessionExercise["id_exercise"],
+            "id_exercise" => $sessionExercise["id_exercise"],
             ':id' => $sessionExercise["id"]
         ]
     );
@@ -375,4 +377,3 @@ function deleteSessionExercise(PDO $pdo, int $id)
 
     return $query->fetch();
 }
-?>
